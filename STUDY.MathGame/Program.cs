@@ -3,45 +3,70 @@
 string name = Console.ReadLine();
 DateTime date = DateTime.UtcNow;
 
-Console.WriteLine("-------------------------------------------");
+Menu(name, date);
 
-Console.WriteLine($"Hello {name}. It's {date.DayOfWeek}.\nThis is your math game. That's great that you're working on improving yourself.\n");
-Console.WriteLine($@"What game would you like to play today? Choose from the options below:
+
+#region Menu
+void Menu(string name, DateTime date)
+{
+    Console.WriteLine("-------------------------------------------");
+
+    Console.WriteLine($"Hello {name}. It's {date.DayOfWeek}.\nThis is your math game. That's great that you're working on improving yourself.\n");
+    Console.WriteLine($@"What game would you like to play today? Choose from the options below:
 A - Addition
 S - Subtraction
 M - Multiplication
 D - Division
 Q - Quit the program");
 
-Console.WriteLine("-------------------------------------------");
+    Console.WriteLine("-------------------------------------------");
 
-string gameSelection = Console.ReadLine();
+    string gameSelection = Console.ReadLine();
 
-if (gameSelection.Trim().ToLower() == "a")
-{
-    Console.WriteLine("Addition game selected.");
+    switch (gameSelection.Trim().ToLower())
+    {
+        case "a":
+            AdditionGame("Addition game selected.");
+            break;
+        case "s":
+            SubtractionGame("Subtraction game selected.");
+            break;
+        case "m":
+            MultiplicationGame("Multiplication game selected.");
+            break;
+        case "d":
+            DivisionGame("Division game selected.");
+            break;
+        case "q":
+            Console.WriteLine("Goodbye !");
+            System.Threading.Thread.Sleep(500);
+            break;
+        default:
+            Console.WriteLine("Input not recognized, the program will now close.");
+            System.Threading.Thread.Sleep(1500);
+            break;
+
+    }
 }
-else if (gameSelection.Trim().ToLower().Trim().ToLower() == "s")
+
+#endregion
+
+#region GameMethods
+void AdditionGame(string messageToPrint)
 {
-    Console.WriteLine("Subtraction game selected.");
+    Console.WriteLine(messageToPrint);
 }
-else if (gameSelection.Trim().ToLower() == "m")
+void SubtractionGame(string messageToPrint)
 {
-    Console.WriteLine("Multiplication game selected.");
+    Console.WriteLine(messageToPrint);
 }
-else if (gameSelection.Trim().ToLower() == "d" )
+void MultiplicationGame(string messageToPrint)
 {
-    Console.WriteLine("Division game selected.");
+    Console.WriteLine(messageToPrint);
 }
-else if (gameSelection.Trim().ToLower() == "q")
+void DivisionGame(string messageToPrint)
 {
-    Console.WriteLine("Goodbye !");
-    System.Threading.Thread.Sleep(500);
-    Environment.Exit(1);
+    Console.WriteLine(messageToPrint);
 }
-else
-{
-    Console.WriteLine("Input not recognized, the program will now close.");
-    System.Threading.Thread.Sleep(1500);
-    Environment.Exit(1);
-}
+
+#endregion
