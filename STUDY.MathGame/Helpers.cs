@@ -31,10 +31,12 @@ namespace STUDY.MathGame
 
         internal static void PrintGames()
         {
+            var gamesToPrint = gamesPlayed.Where(game => game.Date.Day > DateTime.Now.Day).OrderByDescending(game => game.Date);
+
             Console.Clear();
             Console.WriteLine("Games history");
             Console.WriteLine("-------------------------------------------");
-            foreach (Game game in gamesPlayed)
+            foreach (Game game in gamesToPrint)
             {
                 Console.WriteLine($"{game.Date} - {game.Type}: {game.Score} points.");
             }
