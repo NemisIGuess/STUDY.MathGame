@@ -1,4 +1,6 @@
-﻿namespace STUDY.MathGame
+﻿using STUDY.MathGame.Models;
+
+namespace STUDY.MathGame
 {
     internal class GameEngine
     {
@@ -40,7 +42,7 @@
                 }
             }
 
-            Helpers.AddToGameHistory(score, "Addition");
+            Helpers.AddToGameHistory(score, GameType.Addition);
 
         }
         internal void SubtractionGame(string messageToPrint)
@@ -81,7 +83,7 @@
                 }
             }
 
-            Helpers.AddToGameHistory(score, "Subtraction");
+            Helpers.AddToGameHistory(score, GameType.Subtraction);
 
         }
         internal void MultiplicationGame(string messageToPrint)
@@ -122,7 +124,7 @@
                 }
             }
 
-            Helpers.AddToGameHistory(score, "Multiplication");
+            Helpers.AddToGameHistory(score, GameType.Multiplication);
 
         }
         internal void DivisionGame(string messageToPrint)
@@ -159,7 +161,7 @@
                 }
             }
 
-            Helpers.AddToGameHistory(score, "Division");
+            Helpers.AddToGameHistory(score, GameType.Division);
 
         }
     }

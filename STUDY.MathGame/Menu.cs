@@ -40,7 +40,7 @@
                         engine.DivisionGame("Division game.");
                         break;
                     case "v":
-                        Helpers.GetGames();
+                        Helpers.PrintGames();
                         break;
                     case "q":
                         Console.WriteLine("Goodbye !");

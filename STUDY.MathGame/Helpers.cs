@@ -1,8 +1,25 @@
-﻿namespace STUDY.MathGame
+﻿using STUDY.MathGame.Models;
+
+namespace STUDY.MathGame
 {
     internal class Helpers
     {
-        static List<string> gamesPlayed = new();
+        internal static List<Game> gamesPlayed = new List<Game>
+        {
+            new Game { Date = DateTime.Now.AddDays(1), Type = GameType.Addition, Score = 5 },
+            new Game { Date = DateTime.Now.AddDays(2), Type = GameType.Multiplication, Score = 4 },
+            new Game { Date = DateTime.Now.AddDays(3), Type = GameType.Division, Score = 4 },
+            new Game { Date = DateTime.Now.AddDays(4), Type = GameType.Subtraction, Score = 3 },
+            new Game { Date = DateTime.Now.AddDays(5), Type = GameType.Addition, Score = 1 },
+            new Game { Date = DateTime.Now.AddDays(6), Type = GameType.Multiplication, Score = 2 },
+            new Game { Date = DateTime.Now.AddDays(7), Type = GameType.Division, Score = 3 },
+            new Game { Date = DateTime.Now.AddDays(8), Type = GameType.Subtraction, Score = 4 },
+            new Game { Date = DateTime.Now.AddDays(9), Type = GameType.Addition, Score = 4 },
+            new Game { Date = DateTime.Now.AddDays(10), Type = GameType.Multiplication, Score = 1 },
+            new Game { Date = DateTime.Now.AddDays(11), Type = GameType.Subtraction, Score = 0 },
+            new Game { Date = DateTime.Now.AddDays(12), Type = GameType.Division, Score = 2 },
+            new Game { Date = DateTime.Now.AddDays(13), Type = GameType.Subtraction, Score = 5 },
+        };
 
         internal static string GetName()
         {
@@ -12,14 +29,14 @@
             return name;
         }
 
-        internal static void GetGames()
+        internal static void PrintGames()
         {
             Console.Clear();
             Console.WriteLine("Games history");
             Console.WriteLine("-------------------------------------------");
-            foreach (string game in gamesPlayed)
+            foreach (Game game in gamesPlayed)
             {
-                Console.WriteLine(game);
+                Console.WriteLine($"{game.Date} - {game.Type}: {game.Score} points.");
             }
             Console.WriteLine("-------------------------------------------\n");
             Console.WriteLine("Press any key to go back to the menu.");
@@ -46,9 +63,13 @@
             return result;
         }
 
-        internal static void AddToGameHistory(int gameScore, string gameType)
+        internal static void AddToGameHistory(int gameScore, GameType gameType)
         {
-            gamesPlayed.Add($"{DateTime.Now} - {gameType}: scored {gameScore} points.");
+            gamesPlayed.Add(new Game { 
+                Date = DateTime.Now,
+                Score = gameScore,
+                Type = gameType
+            });
         }
 
     }
