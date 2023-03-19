@@ -6,8 +6,11 @@
 
         internal void ShowMenu(string name)
         {
-            Console.WriteLine("-------------------------------------------");
+            Console.Clear();
             Console.WriteLine($"Hello {name} !.\nThis is your math game. That's great that you're working on improving yourself.\n");
+            Console.WriteLine("Press any key to show the menu.");
+            Console.ReadLine();
+            Console.WriteLine("\n");
 
             bool isGameOn = true;
 
@@ -15,12 +18,12 @@
             {
                 Console.Clear();
                 Console.WriteLine($@"What game would you like to play today? Choose from the options below:
-        A - Addition
-        S - Subtraction
-        M - Multiplication
-        D - Division
-        V - View previous games
-        Q - Quit the program");
+                A - Addition
+                S - Subtraction
+                M - Multiplication
+                D - Division
+                V - View previous games
+                Q - Quit the program");
                 Console.WriteLine("-------------------------------------------");
 
                 string gameSelection = Console.ReadLine();

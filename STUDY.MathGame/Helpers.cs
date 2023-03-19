@@ -4,39 +4,28 @@ namespace STUDY.MathGame
 {
     internal class Helpers
     {
-        internal static List<Game> gamesPlayed = new List<Game>
-        {
-            new Game { Date = DateTime.Now.AddDays(1), Type = GameType.Addition, Score = 5 },
-            new Game { Date = DateTime.Now.AddDays(2), Type = GameType.Multiplication, Score = 4 },
-            new Game { Date = DateTime.Now.AddDays(3), Type = GameType.Division, Score = 4 },
-            new Game { Date = DateTime.Now.AddDays(4), Type = GameType.Subtraction, Score = 3 },
-            new Game { Date = DateTime.Now.AddDays(5), Type = GameType.Addition, Score = 1 },
-            new Game { Date = DateTime.Now.AddDays(6), Type = GameType.Multiplication, Score = 2 },
-            new Game { Date = DateTime.Now.AddDays(7), Type = GameType.Division, Score = 3 },
-            new Game { Date = DateTime.Now.AddDays(8), Type = GameType.Subtraction, Score = 4 },
-            new Game { Date = DateTime.Now.AddDays(9), Type = GameType.Addition, Score = 4 },
-            new Game { Date = DateTime.Now.AddDays(10), Type = GameType.Multiplication, Score = 1 },
-            new Game { Date = DateTime.Now.AddDays(11), Type = GameType.Subtraction, Score = 0 },
-            new Game { Date = DateTime.Now.AddDays(12), Type = GameType.Division, Score = 2 },
-            new Game { Date = DateTime.Now.AddDays(13), Type = GameType.Subtraction, Score = 5 },
-        };
+        internal static List<Game> gamesPlayed = new();
 
         internal static string GetName()
         {
             Console.WriteLine("Please type your name");
 
             string name = Console.ReadLine();
+
+            while (string.IsNullOrEmpty(name))
+            {
+                Console.WriteLine("The name can't be empty. Please input a name.");
+                name = Console.ReadLine();
+            }
             return name;
         }
 
         internal static void PrintGames()
         {
-            var gamesToPrint = gamesPlayed.Where(game => game.Date.Day > DateTime.Now.Day).OrderByDescending(game => game.Date);
-
             Console.Clear();
             Console.WriteLine("Games history");
             Console.WriteLine("-------------------------------------------");
-            foreach (Game game in gamesToPrint)
+            foreach (Game game in gamesPlayed)
             {
                 Console.WriteLine($"{game.Date} - {game.Type}: {game.Score} points.");
             }
@@ -74,5 +63,15 @@ namespace STUDY.MathGame
             });
         }
 
+        internal static string? ValidateUserInput(string userInput)
+        {
+            while (string.IsNullOrEmpty(userInput) || !Int32.TryParse(userInput, out _))
+            {
+                Console.WriteLine("Your answer needs to be an integer. Try again.");
+                userInput = Console.ReadLine();
+            }
+
+            return userInput;
+        }
     }
 }
