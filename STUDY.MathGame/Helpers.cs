@@ -27,7 +27,7 @@ namespace STUDY.MathGame
             Console.WriteLine("-------------------------------------------");
             foreach (Game game in gamesPlayed)
             {
-                Console.WriteLine($"{game.Date} - {game.Type}: {game.Score}p. Took {game.GameTime.Hours*60+game.GameTime.Minutes}m{game.GameTime.Seconds}s");
+                Console.WriteLine($"{game.Date} - {game.Type}: {game.Score}p in {game.GameRounds} rounds. Took {game.GameTime.Hours*60+game.GameTime.Minutes}m{game.GameTime.Seconds}s");
             }
             Console.WriteLine("-------------------------------------------\n");
             Console.WriteLine("Press any key to go back to the menu.");
@@ -54,17 +54,18 @@ namespace STUDY.MathGame
             return result;
         }
 
-        internal static void AddToGameHistory(int gameScore, GameType gameType, TimeSpan gameTime)
+        internal static void AddToGameHistory(int gameScore,int gameRounds, GameType gameType, TimeSpan gameTime)
         {
             gamesPlayed.Add(new Game { 
                 Date = DateTime.Now,
                 Score = gameScore,
+                GameRounds = gameRounds,
                 Type = gameType,
                 GameTime = gameTime
             });
         }
 
-        internal static string? ValidateUserInput(string userInput)
+        internal static string ValidateUserInput(string userInput)
         {
             while (string.IsNullOrEmpty(userInput) || !Int32.TryParse(userInput, out _))
             {
@@ -73,6 +74,17 @@ namespace STUDY.MathGame
             }
 
             return userInput;
+        }
+
+        internal static int CheckGameRounds()
+        {
+            Console.WriteLine("Press any key to play 5 rounds or introduce an integer to change the amount of rounds.");
+            var userInput = Console.ReadLine();
+
+            if (int.TryParse(userInput, out _))
+                return Convert.ToInt32(userInput);
+
+            return 5;
         }
     }
 }

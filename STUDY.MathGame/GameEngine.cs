@@ -5,7 +5,7 @@ namespace STUDY.MathGame
 {
     internal class GameEngine
     {
-        internal void AdditionGame(string messageToPrint)
+        internal void AdditionGame(string messageToPrint, int gameRounds)
         {
             Console.Clear();
             Console.WriteLine(messageToPrint);
@@ -17,7 +17,7 @@ namespace STUDY.MathGame
 
             Stopwatch gameTime = new Stopwatch();
             gameTime.Start();
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < gameRounds; i++)
             {
                 Random randomGenerator = new Random();
                 firstNumber = randomGenerator.Next(1, 9);
@@ -40,17 +40,17 @@ namespace STUDY.MathGame
                     Console.ReadLine();
                 }
 
-                if (i == 4)
+                if (i == gameRounds -1)
                 {
                     Console.WriteLine($"Your score is {score}. Press any key to go back to the menu.");
                     Console.ReadLine();
                 }
             }
 
-            Helpers.AddToGameHistory(score, GameType.Addition, gameTime.Elapsed);
+            Helpers.AddToGameHistory(score, gameRounds, GameType.Addition, gameTime.Elapsed);
 
         }
-        internal void SubtractionGame(string messageToPrint)
+        internal void SubtractionGame(string messageToPrint, int gameRounds)
         {
             Console.Clear();
             Console.WriteLine(messageToPrint);
@@ -63,7 +63,7 @@ namespace STUDY.MathGame
             Stopwatch gameTime = new Stopwatch();
             gameTime.Start();
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < gameRounds; i++)
             {
                 Random randomGenerator = new Random();
                 firstNumber = randomGenerator.Next(1, 9);
@@ -86,17 +86,17 @@ namespace STUDY.MathGame
                     Console.ReadLine();
                 }
 
-                if (i == 4)
+                if (i == gameRounds -1)
                 {
                     Console.WriteLine($"Your score is {score}. Press any key to go back to the menu.");
                     Console.ReadLine();
                 }
             }
 
-            Helpers.AddToGameHistory(score, GameType.Subtraction, gameTime.Elapsed);
+            Helpers.AddToGameHistory(score, gameRounds, GameType.Subtraction, gameTime.Elapsed);
 
         }
-        internal void MultiplicationGame(string messageToPrint)
+        internal void MultiplicationGame(string messageToPrint, int gameRounds)
         {
             Console.Clear();
             Console.WriteLine(messageToPrint);
@@ -109,7 +109,7 @@ namespace STUDY.MathGame
             Stopwatch gameTime = new Stopwatch();
             gameTime.Start();
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < gameRounds; i++)
             {
                 Random randomGenerator = new Random();
                 firstNumber = randomGenerator.Next(1, 9);
@@ -132,17 +132,17 @@ namespace STUDY.MathGame
                     Console.ReadLine();
                 }
 
-                if (i == 4)
+                if (i == gameRounds - 1)
                 {
                     Console.WriteLine($"Your score is {score}. Press any key to go back to the menu.");
                     Console.ReadLine();
                 }
             }
 
-            Helpers.AddToGameHistory(score, GameType.Multiplication, gameTime.Elapsed);
+            Helpers.AddToGameHistory(score, gameRounds, GameType.Multiplication, gameTime.Elapsed);
 
         }
-        internal void DivisionGame(string messageToPrint)
+        internal void DivisionGame(string messageToPrint, int gameRounds)
         {
             Console.Clear();
             Console.WriteLine(messageToPrint);
@@ -151,7 +151,7 @@ namespace STUDY.MathGame
             Stopwatch gameTime = new Stopwatch();
             gameTime.Start();
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < gameRounds; i++)
             {
                 int[] divisonNumbers = Helpers.DivisionNumberGenerator();
                 int firstNumber = divisonNumbers[0];
@@ -174,14 +174,14 @@ namespace STUDY.MathGame
                     Console.ReadLine();
                 }
 
-                if (i == 4)
+                if (i == gameRounds - 1)
                 {
                     Console.WriteLine($"Your score is {score}. Press any key to go back to the menu.");
                     Console.ReadLine();
                 }
             }
 
-            Helpers.AddToGameHistory(score, GameType.Division, gameTime.Elapsed);
+            Helpers.AddToGameHistory(score, gameRounds, GameType.Division, gameTime.Elapsed);
 
         }
     }

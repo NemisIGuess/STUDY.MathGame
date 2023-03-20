@@ -13,6 +13,7 @@
             Console.WriteLine("\n");
 
             bool isGameOn = true;
+            int rounds = default;
 
             do
             {
@@ -31,16 +32,20 @@
                 switch (gameSelection.Trim().ToLower())
                 {
                     case "a":
-                        engine.AdditionGame("Addition game.");
+                        rounds = Helpers.CheckGameRounds();
+                        engine.AdditionGame("Addition game.", rounds);
                         break;
                     case "s":
-                        engine.SubtractionGame("Subtraction game.");
+                        rounds = Helpers.CheckGameRounds();
+                        engine.SubtractionGame("Subtraction game.", rounds);
                         break;
                     case "m":
-                        engine.MultiplicationGame("Multiplication game.");
+                        rounds = Helpers.CheckGameRounds();
+                        engine.MultiplicationGame("Multiplication game.", rounds);
                         break;
                     case "d":
-                        engine.DivisionGame("Division game.");
+                        rounds = Helpers.CheckGameRounds();
+                        engine.DivisionGame("Division game.", rounds);
                         break;
                     case "v":
                         Helpers.PrintGames();
