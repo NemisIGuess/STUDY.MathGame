@@ -27,7 +27,7 @@ namespace STUDY.MathGame
             Console.WriteLine("-------------------------------------------");
             foreach (Game game in gamesPlayed)
             {
-                Console.WriteLine($"{game.Date} - {game.Type}: {game.Score} points.");
+                Console.WriteLine($"{game.Date} - {game.Type}: {game.Score}p. Took {game.GameTime.Hours*60+game.GameTime.Minutes}m{game.GameTime.Seconds}s");
             }
             Console.WriteLine("-------------------------------------------\n");
             Console.WriteLine("Press any key to go back to the menu.");
@@ -54,12 +54,13 @@ namespace STUDY.MathGame
             return result;
         }
 
-        internal static void AddToGameHistory(int gameScore, GameType gameType)
+        internal static void AddToGameHistory(int gameScore, GameType gameType, TimeSpan gameTime)
         {
             gamesPlayed.Add(new Game { 
                 Date = DateTime.Now,
                 Score = gameScore,
-                Type = gameType
+                Type = gameType,
+                GameTime = gameTime
             });
         }
 

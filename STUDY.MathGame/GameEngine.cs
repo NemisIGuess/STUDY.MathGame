@@ -1,4 +1,5 @@
 ﻿using STUDY.MathGame.Models;
+using System.Diagnostics;
 
 namespace STUDY.MathGame
 {
@@ -14,6 +15,8 @@ namespace STUDY.MathGame
             int firstNumber;
             int secondNumber;
 
+            Stopwatch gameTime = new Stopwatch();
+            gameTime.Start();
             for (int i = 0; i < 5; i++)
             {
                 Random randomGenerator = new Random();
@@ -44,7 +47,7 @@ namespace STUDY.MathGame
                 }
             }
 
-            Helpers.AddToGameHistory(score, GameType.Addition);
+            Helpers.AddToGameHistory(score, GameType.Addition, gameTime.Elapsed);
 
         }
         internal void SubtractionGame(string messageToPrint)
@@ -56,6 +59,9 @@ namespace STUDY.MathGame
 
             int firstNumber;
             int secondNumber;
+
+            Stopwatch gameTime = new Stopwatch();
+            gameTime.Start();
 
             for (int i = 0; i < 5; i++)
             {
@@ -87,7 +93,7 @@ namespace STUDY.MathGame
                 }
             }
 
-            Helpers.AddToGameHistory(score, GameType.Subtraction);
+            Helpers.AddToGameHistory(score, GameType.Subtraction, gameTime.Elapsed);
 
         }
         internal void MultiplicationGame(string messageToPrint)
@@ -99,6 +105,9 @@ namespace STUDY.MathGame
 
             int firstNumber;
             int secondNumber;
+
+            Stopwatch gameTime = new Stopwatch();
+            gameTime.Start();
 
             for (int i = 0; i < 5; i++)
             {
@@ -130,7 +139,7 @@ namespace STUDY.MathGame
                 }
             }
 
-            Helpers.AddToGameHistory(score, GameType.Multiplication);
+            Helpers.AddToGameHistory(score, GameType.Multiplication, gameTime.Elapsed);
 
         }
         internal void DivisionGame(string messageToPrint)
@@ -138,6 +147,9 @@ namespace STUDY.MathGame
             Console.Clear();
             Console.WriteLine(messageToPrint);
             int score = 0;
+
+            Stopwatch gameTime = new Stopwatch();
+            gameTime.Start();
 
             for (int i = 0; i < 5; i++)
             {
@@ -169,7 +181,7 @@ namespace STUDY.MathGame
                 }
             }
 
-            Helpers.AddToGameHistory(score, GameType.Division);
+            Helpers.AddToGameHistory(score, GameType.Division, gameTime.Elapsed);
 
         }
     }
